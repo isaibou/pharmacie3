@@ -1,0 +1,93 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = false;
+  ">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">Users</h1>
+        </div>
+
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md">
+      <!-- stats -->
+      <div class="row">
+        <div class="panel panel-default">
+    <div class="panel-heading font-bold">
+      Add an User
+    </div>
+    <div class="panel-body">
+      <form class="form-inline ng-pristine ng-valid" role="form">
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputEmail2">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" ng-model="user.email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" >Name</label>
+          <input type="text" class="form-control"  placeholder="Enter Name" ng-model="user.name">
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-click="addUser(user)">Submit</button>
+
+      </form>
+    </div>
+  </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Users
+        </div>
+        <div>
+          <table class="table" ui-jq="footable" ui-options='{
+            "paging": {
+              "enabled": true
+            },
+            "filtering": {
+              "enabled": true
+            },
+            "sorting": {
+              "enabled": true
+            }}'>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-expanded="true" ng-repeat="user in users track by $index">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                  <div class="buttons">
+          <button class="btn btn-sm btn-info" ng-click="editUser(user)">edit</button>
+          <button class="btn btn-sm btn-danger" ng-click="deleteUser(user)">delete</button>
+        </div>
+                </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- / stats -->
+
+      <!-- service -->
+
+      <!-- / service -->
+
+      <!-- tasks -->
+
+      <!-- / tasks -->
+
+      <!-- tasks -->
+
+      <!-- / tasks -->
+    </div>
