@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Commander</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body>
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>Pharmacie  NIBIGHOLET</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Commander </div>
+       <form th:action="@{saveOrdonnance}" enctype="multipart/form-data"   method ="post" th:object="${commande}"> 
+     <div class="panel-body">
+       
+       
+    
+         
+       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Commande</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="file" class="form-control" id="input-id-1" placeholder="Entrez votre commande "  name="file" />
+         </div>
+        
+         
+         
+     <!--     
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request Of Execution Date</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id="input-id-1" th:field=*{RequestOfExecutionDate}/>
+            <span class="text-danger" th:errors=*{RequestOfExecutionDate}></span>
+         </div>
+         
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
+     <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" name="request" class="form-control" id="input-id-1"/>
+         </div>
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
+     <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" name="response" class="form-control" id="input-id-1"/>
+         </div> -->
+         <div>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="myCommande"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Commander</button>
+       </div> 
+       </div>     
+      </form>
+    
+     </div>  
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; Pharmacie NIBIGHOLET 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -15,6 +15,7 @@ public interface CommandeRepository extends JpaRepository<Commande, Long> {
  
 	public		List<Commande> findByClient(Client client);
 	 
+	public List<Commande> findByDocName(String docName);
 	
 	
 }

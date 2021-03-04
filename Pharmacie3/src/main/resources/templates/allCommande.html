@@ -650,23 +650,43 @@ document.addEventListener('DOMContentLoaded', function() {
             </ul>
             
  -->         
-  <li>
-                <a th:href="@{/myCommande}">
+  <li  >
+                <a   th:href="@{/myCommande}">
                   <i class="s"> </i>
-                   <span>Mes Commandes</span>
+                   <span >Mes Commandes</span>
+                </a>
+              </li> 
+               <li  >
+                <a   th:href="@{/myOrdonnance}">
+                  <i class="s"> </i>
+                   <span >Mes Ordonnances</span>
                 </a>
               </li> 
               
-                <li>
+                <li sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/allCommande}">
                   <i class="hidden-folded padder m-t m-b-sm text-muted text-xs"> </i>
                    <span>Toutes les Commandes</span>
                 </a>
               </li>  
+              
+               <li sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/allCommandeOrdonnance}">
+                  <i class="hidden-folded padder m-t m-b-sm text-muted text-xs"> </i>
+                   <span>Toutes les Ordonnances</span>
+                </a>
+              </li>  
+              
+               <li >
+                <a th:href="@{/jesuisla}">
+                  <i class="hidden-folded padder m-t m-b-sm text-muted text-xs"> </i>
+                   <span>Je suis la</span>
+                </a>
+              </li>  
    <li>
                 <a th:href="@{/logout}">
                   <i class="icon-question icon"> </i>
-                   <span>Se déconncter</span>
+                   <span>Déconnexion</span>
                 </a>
               </li>  </nav>
           <!-- nav -->
@@ -828,8 +848,10 @@ document.addEventListener('DOMContentLoaded', function() {
                               { mData: 'nom' },
                               { mData: 'commande' },
                               { mData: 'numero' },
-                              { mData: 'statut' },
+                              { mData: 'statut' }, 
+                              { mData: 'paye' }, 
                               { mData: 'action' }
+                              
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
@@ -840,6 +862,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<th  style="width:15%"><center>Numéro de téléphone</center></th>
     <th  style="width:5%"><center>Statut</center></th>
     <th  style="width:25%"><center> Date</center></th>
+    <th  style="width:25%"><center> Payée</center></th>
 
      </tr>
     </thead>
@@ -855,7 +878,13 @@ document.addEventListener('DOMContentLoaded', function() {
              <span th:case="'Rejetée'" class="label bg-danger pull-center m-t-md" >Non Confirmée </span>
              <span th:case="'Livrée'" class="label bg-primary pull-center m-t-md" >Livrée</span>
         </td>
+       
     <td th:text="${#dates.format(t.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
+      <td th:switch = "${t.paye}"><center></center>
+    		<span th:if="${t.paye}" class="label bg-success pull-center m-t-md" >Payée</span>
+            <span th:unless="${t.paye}" class="label bg-danger pull-center m-t-md" >Non Payée </span>
+        
+        </td>
     </tbody>
    </table>
     </div>
@@ -918,7 +947,9 @@ document.addEventListener('DOMContentLoaded', function() {
                               { mData: 'nom' },
                               { mData: 'commande' },
                               { mData: 'numero' },
-                              { mData: 'date' },{ mData: 'prix' },                             
+                              { mData: 'date' },
+                              { mData: 'prix' },
+                               { mData: 'payeh' },                             
                               { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
@@ -930,6 +961,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center> Date</center></th>
     <th  style="width:15%"><center> Prix</center></th>
+    <th  style="width:15%"><center> Payée</center></th>
     <th  style="width:15%"><center>Actions</center></th>
      
      </tr>
@@ -944,7 +976,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <td th:text = "${p.client.phoneClient}"><center></center></td>
     <td th:text="${#dates.format(p.dateCommande, 'dd-MM-yyyy ')}"><center></center></td>
     <td th:text = "${p.prix  }  +Fcfa"><center>F</center></td>
-   
+     <td th:switch = "${p.paye}"><center></center>
+    		<span th:if="${p.paye}" class="label bg-success pull-center m-t-md" >Payée</span>
+            <span th:unless="${p.paye}" class="label bg-danger pull-center m-t-md" >Non Payée </span>
+        
+        </td>
     <td><center>
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>

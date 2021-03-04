@@ -23,9 +23,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication()
 		
 		.passwordEncoder(encoder)
-		.usersByUsernameQuery("select email as principal, mdp as credentials, actived from client where email =?")
+		.usersByUsernameQuery("select phone_client as principal, mdp as credentials, actived from client where phone_client =?")
 	
-		.authoritiesByUsernameQuery("select client_email as principal, role_role as role from client_role where client_email =?")
+		.authoritiesByUsernameQuery("select client_phone_client as principal, role_role as role from client_role where client_phone_client =?")
 		.rolePrefix("ROLE_")
 		.dataSource(dataSource);
 		

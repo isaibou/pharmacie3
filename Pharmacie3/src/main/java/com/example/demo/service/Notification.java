@@ -61,7 +61,21 @@ import com.example.demo.entities.Commande;
 
  }
  
+ public void jesuisla(List<Commande> com , Client client) throws MailException{
+	 
+	 String comString = "" ;
+	 for (Commande commande : com) {
+	 	comString +=  commande.getId().toString() + ";";
+		
+	}
+	 SimpleMailMessage mail = new SimpleMailMessage();
+	 mail.setTo("saibouibrahim7@gmail.com");
+	 mail.setFrom("suptechmiage2018@gmail.com");
+	 mail.setSubject("Arrivée du client");
+	 mail.setText("Le client " + client.getNom()+" "+client.getPrenom() + " est la  pour la/les commande(s) " + comString + "." );
+	  	javaMailSender.send(mail);
 
+ }
 
 
 

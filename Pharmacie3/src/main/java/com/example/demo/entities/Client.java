@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -15,17 +16,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class Client implements Serializable {
 
-	@Id
+	
 	
 	private String email;
 	private String nom;
 	private String prenom;
+	@Id
 	private String phoneClient;
 	private String mdp;
 	private boolean actived;
 	
 	@OneToMany(mappedBy = "client")
 	private Collection<Commande>  commande; 
+	
+	@OneToMany(mappedBy = "client")
+	private Collection<CommandeOrdonnance>  commandeOrdonnance; 
 	
 	@ManyToMany
 	private Collection<Roles>  role;
@@ -81,6 +86,12 @@ public class Client implements Serializable {
 	}
 	public void setRole(Collection<Roles> role) {
 		this.role = role;
+	}
+	public Collection<CommandeOrdonnance> getCommandeOrdonnance() {
+		return commandeOrdonnance;
+	}
+	public void setCommandeOrdonnance(Collection<CommandeOrdonnance> commandeOrdonnance) {
+		this.commandeOrdonnance = commandeOrdonnance;
 	}
 	
 

@@ -649,7 +649,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </li>
             </ul>
  -->       
-   <li  >
+  <li  >
                 <a   th:href="@{/myCommande}">
                   <i class="s"> </i>
                    <span >Mes Commandes</span>
@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									<div id="content" class="app-content" role="main">
 										<div class="app-content-body ">
 <div class="bg-light lter b-b wrapper-md">
- <h1 class="m-n font-bold h3">Commandes
+ <h1 class="m-n font-bold h3">Mes Ordonnances
   <a style="margin-top:-5px;" th:href="addCommande" class="btn btn-sm btn-primary pull-right"  role="button"> <b class="glyphicon-plus pull"> </b>Commander</a> 
  </h1>
   <h1 class="m-n font-bold h3">
@@ -807,22 +807,18 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                               { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
+                              { mData: 'paye' },
                               { mData: 'statut' },
-                               { mData: 'paye' },
-                              { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
      <tr >
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:20%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center>Commande </center></th>	
     <th  style="width:5%"><center>Statut</center></th>
     <th  style="width:15%"><center> Date</center></th>
-    <th  style="width:15%"><center> Payée</center></th>  
-    <th  style="width:45%"><center>Action</center></th>
+    <th  style="width:15%"><center> Payée</center></th>
     
 
      </tr>
@@ -831,7 +827,6 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr  data-expanded="true" th:each="t:${toutes}">
     <td th:text = "${t.Id}"><center></center></td>
     <td th:text = "${t.client.nom} +.+${t.client.prenom}"><center></center></td>
-    <td th:text = "${t.ordonnance}"><center></center></td>
     <td th:switch = "${t.status}"><center></center>
     		<span th:case="'Nouvelle'" class="label bg-info pull-center m-t-md" >Nouvelle</span>
              <span th:case="'Confirmée'" class="label bg-success pull-center m-t-md" >Confirmée</span>
@@ -844,11 +839,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <span th:unless="${t.paye}" class="label bg-danger pull-center m-t-md" >Non Payée </span>
         
         </td>
-    <td><center>
-    
-    <button class="btn btn-default btn-xs">
-     <i class="glyphicon glyphicon-cog"></i> <a th:href="@{reCommander(id=${t.Id})}"> Recommander</a> </button></center></td>
-    
+ 
     </tbody>
    </table>
     </div>
@@ -860,7 +851,6 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                              { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
                               { mData: 'date' }, 
                               ]
@@ -869,7 +859,6 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:25%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center> Commande</center></th>
 	<th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center> Date</center></th>
      </tr>
@@ -879,9 +868,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
     <td th:text = "${a.Id}"><center></center></td>
     <td th:text = "${a.client.nom} +.+${a.client.prenom}"><center></center></td>
-	<td th:text = "${a.ordonnance}"><center></center></td>
     <td th:text = "${a.client.phoneClient}"><center></center></td>	
     <td th:text="${#dates.format(a.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
+    
    
      </tr>
     </tbody>
@@ -894,19 +883,17 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                             { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
                               { mData: 'prix' },
                               { mData: 'date' },
                               { mData: 'paye' },
-                              { mData: 'action' },                             
+                              { mData: 'action' }                             
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:25%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center>Commande</center></th>
 	<th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center> Date</center></th>
     <th  style="width:15%"><center> Prix</center></th>
@@ -921,7 +908,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <td th:text = "${p.Id}"><center></center></td>
     <td th:text = "${p.client.nom} +.+${p.client.prenom}"><center></center></td>
-    <td th:text = "${p.ordonnance}"><center></center></td> 
     <td th:text = "${p.client.phoneClient}"><center></center></td>
     <td th:text="${#dates.format(p.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
     <td th:text = "${p.prix} + Fcfa"><center></center></td>
@@ -931,10 +917,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         </td>
      <td> <div>
-       <button class="btn btn-default btn-xs" ><i class="glyphicon glyphicon-cog"></i> <a th:href="@{payerCommande(id=${p.Id})}"> Payer <span class="caret"></span></button>
+       <button class="btn btn-default btn-xs" ><i class="glyphicon glyphicon-cog"></i> <a th:href="@{payerCommandeOrdonnance(id=${p.Id})}"> Payer <span class="caret"></span></button>
                                                   
 </div>
     </td>
+   
+    
      </tr>
     </tbody>
    </table>
@@ -946,7 +934,6 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                               { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' }, 
                               { mData: 'numero' },   
                               { mData: 'action' }
                               ]
@@ -955,7 +942,6 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:45%"><center>Nom et Prénom </center></th>
-    <th  style="width:15%"><center>Commande</center></th>
     <th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center>Date</center></th>
      
@@ -966,7 +952,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <td th:text = "${l.Id}"><center></center></td>
     <td th:text = "${l.client.nom} +.+${l.client.prenom}"><center></center></td>
-    <td th:text = "${l.ordonnance}"><center></center></td>
     <td th:text = "${l.client.phoneClient}"><center></center></td>
     <td th:text="${#dates.format(l.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
      </tr>

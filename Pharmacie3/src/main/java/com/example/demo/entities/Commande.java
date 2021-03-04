@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,6 +21,9 @@ public class Commande {
 	private Long Id;
 	private String status;
 	private String ordonnance;
+	private String docName;
+	private String docType;
+
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date dateCommande;
 	@ManyToOne
@@ -28,10 +32,36 @@ public class Commande {
 	
 	private Long prix;
 	
+	private Boolean paye;
 	
 	public Commande() {
 		super();
 	}
+	
+	
+	
+	
+
+
+
+	public Commande(String status, String ordonnance, String docName, String docType, byte[] data, Date dateCommande,
+			Client client, Long prix) {
+		super();
+		this.status = status;
+		this.ordonnance = ordonnance;
+		this.docName = docName;
+		this.docType = docType;
+		this.dateCommande = dateCommande;
+		this.client = client;
+		this.prix = prix;
+	}
+
+
+
+
+
+
+
 	public Long getId() {
 		return Id;
 	}
@@ -69,6 +99,42 @@ public class Commande {
 	public void setPrix(Long prix) {
 		this.prix = prix;
 	}
+	public String getDocName() {
+		return docName;
+	}
+	public void setDocName(String docName) {
+		this.docName = docName;
+	}
+	public String getDocType() {
+		return docType;
+	}
+	public void setDocType(String docType) {
+		this.docType = docType;
+	}
+
+
+
+
+
+
+
+	public Boolean getPaye() {
+		return paye;
+	}
+
+
+
+
+
+
+
+	public void setPaye(Boolean paye) {
+		this.paye = paye;
+	}
+
+
+
+	
 	
 	
 	

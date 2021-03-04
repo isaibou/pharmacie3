@@ -19,11 +19,11 @@
  </b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Confirmation Commande </div>
-     <form th:action="@{confirmeCommande}"  enctype="multipart/form-data"  method="post" th:object="${com}">
+     <form th:action="@{confirmeCommandeOrdonnance}"  enctype="multipart/form-data"  method="post" th:object="${com}">
    <div class="panel-body">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1" th:text="${idee}"   th:field="*{id}"/>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Id}/>
    </div> 
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Client:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
@@ -31,10 +31,7 @@
    </div>
     <input type="hidden"  class="form-control" id="input-id-1"    th:field=*{client}/>
   
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Commande</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text"  class="form-control" id="input-id-1"   th:field=*{ordonnance}/>
-   </div>  
+  
    
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Email :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
@@ -43,7 +40,7 @@
    
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Date</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input   class="form-control" id="input-id-1" name="d"   th:date="${d}" />
+    <input type="date"  class="form-control" id="input-id-1"   th:field=*{dateCommande} />
    </div>  
     
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prix :</b></label>

@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <!-- brand -->
           <a href="#/" class="navbar-brand text-lt">
             <i class="fa fa-power-off"></i>
-            <span class="hidden-folded m-l-xs">Pharmacie </span>
+            <span class="hidden-folded m-l-xs">Pharmacie NIBIGHOLET </span>
           </a>
           <!-- / brand -->
         </div>
@@ -648,8 +648,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
               </li>
             </ul>
- -->       
-   <li  >
+            
+ -->         
+ <li  >
                 <a   th:href="@{/myCommande}">
                   <i class="s"> </i>
                    <span >Mes Commandes</span>
@@ -704,14 +705,52 @@ document.addEventListener('DOMContentLoaded', function() {
 										<div class="app-content-body ">
 <div class="bg-light lter b-b wrapper-md">
  <h1 class="m-n font-bold h3">Commandes
-  <a style="margin-top:-5px;" th:href="addCommande" class="btn btn-sm btn-primary pull-right"  role="button"> <b class="glyphicon-plus pull"> </b>Commander</a> 
- </h1>
-  <h1 class="m-n font-bold h3">
-  <a style="margin-top:-5px;" th:href="addOrdonnance" class="btn btn-sm btn-primary pull-right"  role="button"> <b class="glyphicon-plus pull"> </b>Ajouter une Ordonnance</a>
+  <a style="margin-top:-5px;" th:href="addCommande" class="btn btn-sm btn-primary pull-right"  role="button"> <b class="glyphicon-plus pull"> </b>Commander</a>
  </h1>
 </div>
 
+																								
+														<div class="row" style="margin:5px;">
+													
+																				<div class="col-sm-12">              
+																					<div class="row row-sm text-center">
+																					
+																					</div>
+																				</div> 
+																				 <div class="col-sm-3">
+	  <a href="" class="block panel padder-v bg-primary item">
+	   <span class="text-white count font-thin h1 block" th:text="${nbreTt}" ></span>
+	   <span class="text-muted text-xs"><b> Total Commandes </b></span>
+	   <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+	  </a>
+	 </div>
+     <div class="col-sm-3">
+      <div class="panel padder-v item">
+       <div class="h1 count text-info font-thin h1 pull-center" th:text="${nbreNew}"></div>
 
+        <span class="text-muted text-xs"><b> Total Nouvelles Commandes </b></span>
+        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
+      </div>
+     </div>
+      <div class="col-sm-3">
+      <div class="panel padder-v item">
+       <div class="h1 count text-info font-thin h1 pull-center" th:text="${nbreRejette}"></div>
+
+        <span class="text-muted text-xs"><b><center>  Total Comandes Rejetée </center> </b></span>
+        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
+      </div>
+     </div>
+     <div class="col-sm-3">
+      <a href="" class="block panel padder-v bg-primary item">
+       <span class="text-white count font-thin h1 block" th:text="${nbreLivree}"></span>
+
+       <span class="text-muted text-xs"><b> Total Commande Livrée</b></span>
+       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+      </a>
+     </div>
+    
+
+    </div>
 <!-- 																				<div class="col-sm-4">
 																				
 																	<thead>
@@ -781,7 +820,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																						 --><div class="col-sm-12" style="background-color:white;margin-bottom:20px;">  
  <div class="tabbable-line">
   <ul class="nav nav-tabs ">
-   <li class="active" >
+   <li class="active">
   <a href="#tab_default_1" data-toggle="tab"><h1 class="m-n font-bold h5">Toutes Commandes</h1> </a>
    </li>
    <li>
@@ -807,48 +846,42 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                               { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
                               { mData: 'statut' },
-                               { mData: 'paye' },
+                               { mData: 'paye' }, 
                               { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
-     <tr >
-    <th style="width:20%"><center> Numéro de Commande</center></th>
+     <tr>
+    <th style="width:5%"><center> Numéro de Commande</center></th>
 	<th  style="width:20%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center>Commande </center></th>	
+	<th  style="width:15%"><center>Numéro de téléphone</center></th>
     <th  style="width:5%"><center>Statut</center></th>
-    <th  style="width:15%"><center> Date</center></th>
-    <th  style="width:15%"><center> Payée</center></th>  
-    <th  style="width:45%"><center>Action</center></th>
+    <th  style="width:25%"><center> Date</center></th>
+    <th  style="width:5%"><center>Payée</center></th>
     
 
      </tr>
     </thead>
     <tbody>
-     <tr  data-expanded="true" th:each="t:${toutes}">
+     <tr data-expanded="true" th:each="t:${toutes}">
     <td th:text = "${t.Id}"><center></center></td>
     <td th:text = "${t.client.nom} +.+${t.client.prenom}"><center></center></td>
-    <td th:text = "${t.ordonnance}"><center></center></td>
-    <td th:switch = "${t.status}"><center></center>
+    <td th:text = "${t.client.phoneClient}"><center></center></td>
+     <td th:switch = "${t.status}"><center></center>
     		<span th:case="'Nouvelle'" class="label bg-info pull-center m-t-md" >Nouvelle</span>
              <span th:case="'Confirmée'" class="label bg-success pull-center m-t-md" >Confirmée</span>
              <span th:case="'Rejetée'" class="label bg-danger pull-center m-t-md" >Non Confirmée </span>
              <span th:case="'Livrée'" class="label bg-primary pull-center m-t-md" >Livrée</span>
         </td>
+       
     <td th:text="${#dates.format(t.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
-     <td th:switch = "${t.paye}"><center></center>
+      <td th:switch = "${t.paye}"><center></center>
     		<span th:if="${t.paye}" class="label bg-success pull-center m-t-md" >Payée</span>
             <span th:unless="${t.paye}" class="label bg-danger pull-center m-t-md" >Non Payée </span>
         
         </td>
-    <td><center>
-    
-    <button class="btn btn-default btn-xs">
-     <i class="glyphicon glyphicon-cog"></i> <a th:href="@{reCommander(id=${t.Id})}"> Recommander</a> </button></center></td>
-    
     </tbody>
    </table>
     </div>
@@ -860,18 +893,20 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                              { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
                               { mData: 'date' }, 
+                              { mData: 'telecharger' },
+                              { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:25%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center> Commande</center></th>
 	<th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center> Date</center></th>
+    <th  style="width:5%"><center>Telecharger</center></th>
+    <th  style="width:15%"><center>Actions</center></th>
      </tr>
     </thead>
     <tbody>
@@ -879,10 +914,26 @@ document.addEventListener('DOMContentLoaded', function() {
   
     <td th:text = "${a.Id}"><center></center></td>
     <td th:text = "${a.client.nom} +.+${a.client.prenom}"><center></center></td>
-	<td th:text = "${a.ordonnance}"><center></center></td>
     <td th:text = "${a.client.phoneClient}"><center></center></td>	
     <td th:text="${#dates.format(a.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
-   
+     <td><center>
+    <button class="btn btn-default btn-xs">
+     <i class="glyphicon glyphicon-cog"></i> <a th:href="@{viewFile(id=${a.Id})}"> Télécharger</a> </button></center></td>
+    
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																												<a th:href="@{confirmerCommandeOrdonnance(id=${a.Id})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Confirmer</a>
+																												<a th:href="@{rejeterCommandeOrdonnance(id=${a.Id})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Rejeter</a>
+																																																															
+																												</li>
+																												
+																										</ul>
+</div>
+     </center></td>
      </tr>
     </tbody>
    </table>
@@ -894,24 +945,22 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                             { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },
-                              { mData: 'prix' },
                               { mData: 'date' },
-                              { mData: 'paye' },
-                              { mData: 'action' },                             
+                              { mData: 'prix' },
+                              { mData: 'paye' },                             
+                              { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:25%"><center>Nom et Prénom </center></th>
-	<th  style="width:45%"><center>Commande</center></th>
 	<th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center> Date</center></th>
     <th  style="width:15%"><center> Prix</center></th>
     <th  style="width:15%"><center> Payée</center></th>
-    <th  style="width:15%"><center> Action</center></th>
+    <th  style="width:15%"><center>Actions</center></th>
      
      </tr>
     </thead>
@@ -921,20 +970,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <td th:text = "${p.Id}"><center></center></td>
     <td th:text = "${p.client.nom} +.+${p.client.prenom}"><center></center></td>
-    <td th:text = "${p.ordonnance}"><center></center></td> 
     <td th:text = "${p.client.phoneClient}"><center></center></td>
-    <td th:text="${#dates.format(p.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
-    <td th:text = "${p.prix} + Fcfa"><center></center></td>
+    <td th:text="${#dates.format(p.dateCommande, 'dd-MM-yyyy ')}"><center></center></td>
+    <td th:text = "${p.prix}  +Fcfa"><center></center></td>
      <td th:switch = "${p.paye}"><center></center>
     		<span th:if="${p.paye}" class="label bg-success pull-center m-t-md" >Payée</span>
             <span th:unless="${p.paye}" class="label bg-danger pull-center m-t-md" >Non Payée </span>
         
         </td>
-     <td> <div>
-       <button class="btn btn-default btn-xs" ><i class="glyphicon glyphicon-cog"></i> <a th:href="@{payerCommande(id=${p.Id})}"> Payer <span class="caret"></span></button>
-                                                  
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																													<a th:href="@{livrerCommandeOrdonnance(id=${p.Id})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Livrer</a>
+																										
+																											</li>
+																											</ul>
 </div>
-    </td>
+     </center></td>
      </tr>
     </tbody>
    </table>
@@ -946,7 +1001,6 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                               { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' }, 
                               { mData: 'numero' },   
                               { mData: 'action' }
                               ]
@@ -955,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:45%"><center>Nom et Prénom </center></th>
-    <th  style="width:15%"><center>Commande</center></th>
     <th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center>Date</center></th>
      
@@ -966,7 +1019,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <td th:text = "${l.Id}"><center></center></td>
     <td th:text = "${l.client.nom} +.+${l.client.prenom}"><center></center></td>
-    <td th:text = "${l.ordonnance}"><center></center></td>
     <td th:text = "${l.client.phoneClient}"><center></center></td>
     <td th:text="${#dates.format(l.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
      </tr>
@@ -982,7 +1034,6 @@ document.addEventListener('DOMContentLoaded', function() {
                               aoColumns: [
                               { mData: 'id' },
                               { mData: 'nom' },
-                              { mData: 'commande' },
                               { mData: 'numero' },    
                               { mData: 'action' }
                               ]
@@ -991,7 +1042,6 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr>
     <th style="width:20%"><center> Numéro de Commande</center></th>
 	<th  style="width:45%"><center>Nom et Prénom </center></th>
-    <th  style="width:15%"><center>Commande</center></th>
     <th  style="width:45%"><center>Numéro de téléphone</center></th>
     <th  style="width:15%"><center>Date</center></th>
      
@@ -1002,7 +1052,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <td th:text = "${n.Id}"><center></center></td>
     <td th:text = "${n.client.nom} +.+${n.client.prenom}"><center></center></td>
-    <td th:text = "${n.ordonnance}"><center></center></td>
     <td th:text = "${n.client.nom} +.+${n.client.prenom}"><center></center></td>
     <td th:text="${#dates.format(n.dateCommande, 'dd-MM-yyyy HH:mm')}"><center></center></td>
      </tr>

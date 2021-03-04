@@ -41,6 +41,52 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+		
+		
+		
+	<dependency>
+	    <groupId>com.nexmo</groupId>
+	    <artifactId>client</artifactId>
+	    <version>5.2.0</version>
+	    <scope>runtime</scope>
+	</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.11.928</version>
+</dependency>
+
+<dependency>
+    <groupId>com.plivo</groupId>
+    <artifactId>plivo-java</artifactId>
+    <version>4.7.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sns -->
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-sns</artifactId>
+    <version>1.11.932</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/com.telesign/telesign -->
+<dependency>
+    <groupId>com.telesign</groupId>
+    <artifactId>telesign</artifactId>
+    <version>2.2.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.nexmo/client -->
+<!-- https://mvnrepository.com/artifact/com.nexmo/client -->
+<dependency>
+    <groupId>com.nexmo</groupId>
+    <artifactId>client</artifactId>
+    <version>4.3.0</version>
+</dependency>
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
